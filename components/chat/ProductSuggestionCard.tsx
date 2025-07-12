@@ -12,21 +12,21 @@ export default function ProductSuggestionCard({
   return (
     <Link
       href="/"
-      className="flex items-center gap-4 rounded-lg border border-gray-300 bg-white p-3 transition-shadow hover:shadow-md"
+      className="flex items-center  gap-4 rounded-lg border border-gray-300 bg-white p-3 transition-shadow hover:shadow-md"
       aria-label={`Xem chi tiết ${product.name}`}
     >
-      <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-md">
+      <div className="relative h-10 w-10 flex-shrink-0 overflow-hidden rounded-md">
         <Image
           src={product.image}
           alt={product.name}
           fill
           className="object-cover"
-          sizes="80px"
+          sizes="40px"
         />
       </div>
       <div className="flex-grow">
-        <p className="font-semibold text-gray-900 ">{product.name}</p>
-        <p className="mt-1 text-sm font-bold text-blue-500">
+        <p className="font-bold text-[12px] text-gray-900 ">{product.name}</p>
+        <p className="mt-1 text-[12px] font-bold text-blue-500">
           {formatPrice(product.price)}
         </p>
       </div>

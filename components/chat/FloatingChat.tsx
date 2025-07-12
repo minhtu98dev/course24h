@@ -19,12 +19,12 @@ export default function FloatingChat() {
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <div className="mb-2 max-w-sm overflow-hidden rounded-2xl border border-gray-300 bg-white shadow-2xl md:max-w-md">
-          <div className="flex items-center justify-between border-b bg-gray-700 p-4 text-white">
-            <h3 className="text-lg font-bold">Trợ lý AI</h3>
+        <div className="mb-2 max-w-92 overflow-hidden rounded-2xl border border-gray-300 bg-white shadow-2xl ">
+          <div className="flex items-center justify-between border-b bg-gray-500 p-3 text-white">
+            <h3 className="text-md font-bold">Trợ lý AI</h3>
             <button
               onClick={() => setIsOpen(false)}
-              className="rounded-full p-1 transition-colors hover:bg-slate-700"
+              className="rounded-full p-1 transition-colors hover:bg-gray-700"
             >
               <X size={20} />
             </button>
@@ -47,7 +47,7 @@ export default function FloatingChat() {
       >
         <button
           onClick={() => setIsOpen(true)}
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-500  text-white shadow-lg transition-transform hover:scale-110 animate-bounce"
+          className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-500  text-white shadow-lg transition-transform hover:scale-110 animate-bounce cursor-pointer"
         >
           <MessageCircle size={24} />
         </button>

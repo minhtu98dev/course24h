@@ -44,7 +44,7 @@ export default function ChatInterface() {
                     <Bot size={20} />
                   </div>
                   <div className="max-w-md rounded-lg bg-gray-100 px-4 py-3 text-gray-800">
-                    <p className="whitespace-pre-wrap">{msg.text}</p>
+                    <p className="text-[13px]">{msg.text}</p>
                     {msg.suggestions && (
                       <div className="mt-3 flex flex-col gap-2">
                         {msg.suggestions.map((p) => (
@@ -53,13 +53,13 @@ export default function ChatInterface() {
                       </div>
                     )}
                     {msg.prompts && (
-                      <div className="mt-3 flex flex-wrap gap-2">
+                      <div className="mt-3 flex flex-wrap gap-2 ">
                         {msg.prompts.map((prompt, index) => (
                           <button
                             key={index}
                             onClick={() => handlePromptClick(prompt)}
                             disabled={isLoading}
-                            className="rounded-full border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-60"
+                            className="rounded-xl text-start  border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-60"
                           >
                             {prompt}
                           </button>
@@ -71,7 +71,7 @@ export default function ChatInterface() {
               )}
 
               {msg.role === "user" && (
-                <div className="max-w-md rounded-lg bg-gray-700 px-4 py-3 text-white">
+                <div className="max-w-md text-[15px] rounded-lg bg-gray-500 px-4 py-3 text-white">
                   <p>{msg.text}</p>
                 </div>
               )}

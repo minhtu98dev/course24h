@@ -92,7 +92,7 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
     if (favoriteIds.size > 0) {
       setFavoriteIds(new Set());
       localStorage.removeItem(FAVORITES_STORAGE_KEY);
-      toast.success("Đã xóa toàn bộ danh sách yêu thích!");
+      toast.error("Đã xóa toàn bộ danh sách yêu thích!");
     }
   }, [favoriteIds]);
 

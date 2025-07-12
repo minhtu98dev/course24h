@@ -3,9 +3,10 @@
 import { usePagination } from "@/hooks/usePagination";
 import ProductCard from "./ProductCard";
 import ProductCardSkeleton from "./ProductCardSkeleton";
-import Pagination from "./Pagination";
+import Pagination from "../ui/Pagination";
 import { Product } from "@/data/products";
 import { RotateCcw } from "lucide-react";
+import EmptyState from "../ui/EmptyState";
 
 type ProductListProps = {
   products: Product[];
@@ -42,11 +43,13 @@ export default function ProductList({
 
   if (suggestionError) {
     return (
-      <div className="text-center text-red-500">
-        <RotateCcw className="mx-auto h-12 w-12" />
-        <p className="mt-4 text-xl font-semibold">Đã có lỗi xảy ra !</p>
-        <p>Xin hãy thử lại</p>
-      </div>
+      <EmptyState
+        icon={<RotateCcw className="h-12 w-12" />}
+        title="Đã có lỗi xảy ra !"
+        description="Xin hãy thử lại"
+        buttonText="Khám phá khóa học"
+        onButtonClick={onClearSuggestions}
+      />
     );
   }
 

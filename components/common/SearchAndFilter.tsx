@@ -1,6 +1,6 @@
 "use client";
 import { Search, Bot } from "lucide-react";
-import Dropdown from "./Dropdown";
+import Dropdown from "../ui/Dropdown";
 
 const priceOptions = [
   { value: "all", label: "Tất cả giá" },
@@ -50,7 +50,7 @@ export default function SearchAndFilter({
         />
       </div>
 
-      <div className="flex flex-wrap items-center gap-3 sm:flex-nowrap">
+      <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
         <Dropdown
           value={selectedCategory}
           onChange={onCategoryChange}

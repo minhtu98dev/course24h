@@ -2,28 +2,38 @@
 "use client";
 
 import { useCart } from "@/hooks/useCart";
-import Link from "next/link";
-import Image from "next/image";
-import { ArrowLeft, Plus, Minus, ShoppingCart, X } from "lucide-react";
-import { formatPrice } from "@/utils/formatters";
-import ScrollReveal from "@/components/common/ScrollReveal";
 
+import Image from "next/image";
+import { Plus, Minus, ShoppingCart, X } from "lucide-react";
+import { formatPrice } from "@/utils/formatters";
+import PageHeader from "@/components/ui/PageHeader";
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import EmptyState from "@/components/ui/EmptyState";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 export default function CartPage() {
-  const { cartItems, removeFromCart, updateQuantity, totalItems, totalPrice } =
-    useCart();
+  const {
+    cartItems,
+    removeFromCart,
+    updateQuantity,
+    totalItems,
+    totalPrice,
+    clearCart,
+  } = useCart();
+  const router = useRouter();
+  const handleCheckout = () => {
+    toast.success("Thanh toán thành công! Cảm ơn bạn đã mua khóa học.");
+    clearCart();
+    setTimeout(() => {
+      router.push("/");
+    }, 1500);
+  };
 
   return (
     <main className="bg-gray-50 min-h-screen">
-      <ScrollReveal>
-        <div className="mx-auto max-w-7xl  px-4 py-8 sm:px-6 lg:px-8">
-          <div className="flex items-center mb-8 gap-4">
-            <Link href="/">
-              <ArrowLeft className="h-6 w-6 hover:scale-110 transform duration-300" />
-            </Link>
-            <h4 className="text-md font-bold tracking-tight text-gray-900 md:text-2xl">
-              Giỏ hàng của bạn
-            </h4>
-          </div>
+      <div className="mx-auto max-w-7xl  px-4 py-8 sm:px-6 lg:px-8">
+        <PageHeader title="Giỏ hàng của bạn" />
+        <ScrollReveal>
           {cartItems.length > 0 ? (
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
               <div className="space-y-4 lg:col-span-2">
@@ -92,29 +102,26 @@ export default function CartPage() {
                       <span>{formatPrice(totalPrice)}</span>
                     </div>
                   </div>
-                  <button className="mt-6 w-full rounded-md bg-gray-700 py-3 font-semibold text-white hover:bg-gray-900">
+                  <button
+                    onClick={handleCheckout}
+                    className="mt-6 w-full rounded-md bg-gray-700 py-3 font-semibold text-white hover:bg-gray-900"
+                  >
                     Tiến hành thanh toán
                   </button>
                 </div>
               </div>
             </div>
           ) : (
-            <div className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 p-12 text-center">
-              <ShoppingCart className="h-16 w-16 text-gray-400" />
-              <p className="mt-4 text-xl font-semibold text-gray-700">
-                Giỏ hàng của bạn đang trống
-              </p>
-
-              <Link
-                href="/"
-                className="mt-6 rounded-md bg-gray-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-gray-900"
-              >
-                Khám phá khóa học
-              </Link>
-            </div>
+            <EmptyState
+              icon={<ShoppingCart className="h-16 w-16" />}
+              title="Giỏ hàng của bạn đang trống"
+              description="Hãy bắt đầu khám phá và thêm các khóa học bạn quan tâm nhé!"
+              buttonText="Khám phá khóa học"
+              buttonLink="/"
+            />
           )}
-        </div>
-      </ScrollReveal>
+        </ScrollReveal>
+      </div>
     </main>
   );
 }

@@ -29,7 +29,12 @@ export default function RootLayout({
         <CartProvider>
           <FavoritesProvider>
             <HistoryProvider>
-              <Toaster position="top-right" richColors closeButton />
+              <Toaster
+                position="top-right"
+                richColors
+                closeButton
+                duration={1000}
+              />
               <Header />
               {children}
               <FloatingChat />

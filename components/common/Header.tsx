@@ -11,17 +11,15 @@ export default function Header() {
 
   const { totalItems } = useCart();
   return (
-    <header className="bg-white shadow-sm">
+    <header className="bg-white shadow-sm sticky top-0 z-40">
       <div className="mx-auto max-w-7xl flex items-center justify-between px-8 py-4">
         <Link
           href="/"
-          className="group flex items-center gap-2" // Dùng 'group' để tạo hiệu ứng cho các phần tử con
+          className="group flex items-center gap-2"
           aria-label="Về trang chủ Course24h"
         >
-          {/* Icon với hiệu ứng xoay khi hover */}
           <GraduationCap className="h-8 w-8 text-blue-500 transition-transform duration-300 group-hover:rotate-12" />
 
-          {/* Tên logo với màu gradient */}
           <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-2xl font-extrabold text-transparent">
             Course24h
           </span>
@@ -32,33 +30,31 @@ export default function Header() {
             <li>
               <Link
                 href="/favorites"
-                className="relative flex items-center gap-1 hover:text-red-600"
+                className="relative flex items-center gap-1 rounded-md p-2 transition-colors hover:bg-gray-100"
               >
                 <Heart size={18} />
-                <span className="hidden md:inline relative">
-                  Yêu thích
-                  {favoriteCount > 0 && (
-                    <span className="absolute -top-3 -right-5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-red-400 text-xs text-white shadow">
-                      {favoriteCount}
-                    </span>
-                  )}
-                </span>
+                <span className="hidden md:inline">Yêu thích</span>
+
+                {favoriteCount > 0 && (
+                  <span className="absolute -top-1 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-red-400 text-xs font-bold text-white shadow">
+                    {favoriteCount}
+                  </span>
+                )}
               </Link>
             </li>
             <li>
               <Link
                 href="/cart"
-                className="relative flex items-center gap-1 hover:text-red-600"
+                className="relative flex items-center gap-1 rounded-md p-2 transition-colors hover:bg-gray-100"
               >
                 <ShoppingCart size={18} />
-                <span className="hidden md:inline relative">
-                  Giỏ hàng
-                  {totalItems > 0 && (
-                    <span className="absolute -top-3 -right-5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-red-400 text-xs text-white shadow">
-                      {totalItems}
-                    </span>
-                  )}
-                </span>
+                <span className="hidden md:inline">Giỏ hàng</span>
+
+                {totalItems > 0 && (
+                  <span className="absolute -top-1 -right-2 inline-flex h-4 w-4 items-center justify-center rounded-full bg-red-400 text-xs text-white shadow">
+                    {totalItems}
+                  </span>
+                )}
               </Link>
             </li>
           </ul>

@@ -7,8 +7,8 @@ export default function Footer() {
   return (
     <footer className="bg-slate-800 text-gray-300">
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-48 lg:grid-cols-3">
-          <div className="md:col-span-2 lg:col-span-1">
+        <div className="grid grid-cols-2 lg:gap-48 lg:grid-cols-3">
+          <div className="col-span-2 lg:col-span-1">
             <Link
               href="/"
               className="flex items-center gap-2 text-xl font-bold text-white"
@@ -55,9 +55,9 @@ export default function Footer() {
           <p className="mt-2">
             &copy; {new Date().getFullYear()} EduPlatform. All rights reserved.
           </p>
-          <p className="mt-1">
+          <p className="mt-1 ">
             Thiết kế bởi
-            <a href="#" className="font-semibold hover:text-white">
+            <a href="#" className="font-semibold ml-1 hover:text-white">
               Phạm Minh Tú
             </a>
           </p>

@@ -12,7 +12,7 @@ function handleError(error: unknown): NextResponse {
 export async function POST(request: Request) {
   try {
     const { historyIds, favoriteIds,cartIds  } = await request.json();
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    await new Promise(resolve => setTimeout(resolve, 1000));
     const interactedIds = new Set([...historyIds, ...favoriteIds, ...cartIds]);
     const interactedProducts = allProducts.filter(p => interactedIds.has(p.id));
 

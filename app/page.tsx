@@ -13,7 +13,7 @@ import { useAiSuggestions } from "@/hooks/useAiSuggestions";
 import { useHistory } from "@/hooks/useHistory";
 import Slider from "@/components/common/Slider";
 import { slides } from "@/data/slide";
-import ScrollReveal from "@/components/common/ScrollReveal";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 export default function HomePage() {
   const { filteredProducts, ...filterProps } = useProductFilter(allProducts);
   const {
@@ -39,9 +39,7 @@ export default function HomePage() {
   return (
     <main>
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <ScrollReveal>
-          <Slider slides={slides} />
-        </ScrollReveal>
+        <Slider slides={slides} />
 
         <div className="relative z-20">
           <SearchAndFilter

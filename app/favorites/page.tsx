@@ -4,9 +4,10 @@ import { useFavorites } from "@/hooks/useFavorites";
 import { products as allProducts, Product } from "@/data/products";
 import ProductList from "@/components/common/ProductList";
 import ProductDetailModal from "@/components/common/ProductDetailModal";
-import Link from "next/link";
-import { ArrowLeft, Heart } from "lucide-react";
-import ScrollReveal from "@/components/common/ScrollReveal";
+import { Heart } from "lucide-react";
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import PageHeader from "@/components/ui/PageHeader";
+import EmptyState from "@/components/ui/EmptyState";
 
 export default function FavoritesPage() {
   const { favoriteIds, clearFavorites } = useFavorites();
@@ -23,14 +24,7 @@ export default function FavoritesPage() {
     <main className="bg-gray-50 min-h-screen">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="mb-8 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Link href="/">
-              <ArrowLeft className="h-6 w-6 hover:scale-110 transform duration-300" />
-            </Link>
-            <h4 className="text-md font-bold tracking-tight text-gray-900 md:text-2xl">
-              Khóa học yêu thích
-            </h4>
-          </div>
+          <PageHeader title=" Khóa học yêu thích" />
           {favoritedProducts.length > 0 && (
             <button
               onClick={clearFavorites}
@@ -47,19 +41,13 @@ export default function FavoritesPage() {
               onViewDetails={handleViewDetails}
             />
           ) : (
-            <div className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 p-12 text-center">
-              <Heart className="h-16 w-16 text-gray-400" />
-              <p className="mt-4 text-xl font-semibold text-gray-700">
-                Chưa có khóa học yêu thích nào
-              </p>
-
-              <Link
-                href="/"
-                className="mt-6 rounded-md bg-gray-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-gray-900"
-              >
-                Khám phá khóa học
-              </Link>
-            </div>
+            <EmptyState
+              icon={<Heart className="h-16 w-16" />}
+              title="Chưa có khóa học yêu thích nào"
+              description="Hãy bắt đầu khám phá và thêm các khóa học bạn quan tâm nhé!"
+              buttonText="Khám phá khóa học"
+              buttonLink="/"
+            />
           )}
         </ScrollReveal>
       </div>
