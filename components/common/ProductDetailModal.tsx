@@ -7,7 +7,7 @@ import { X, Star, Heart, Users, Clock } from "lucide-react";
 import { Product } from "@/data/products";
 import { formatPrice } from "@/utils/formatters";
 import { useFavorites } from "@/hooks/useFavorites";
-import { useCart } from "@/hooks/useCart"; // Import hook giỏ hàng
+import { useCart } from "@/hooks/useCart";
 import { toast } from "sonner";
 
 type ProductDetailModalProps = {
@@ -22,7 +22,7 @@ export default function ProductDetailModal({
   onClose,
 }: ProductDetailModalProps) {
   const { isFavorite, toggleFavorite } = useFavorites();
-  const { addToCart } = useCart(); // Lấy hàm addToCart
+  const { addToCart } = useCart();
   if (!product) return null;
 
   const favorited = isFavorite(product.id);
@@ -79,7 +79,6 @@ export default function ProductDetailModal({
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Left */}
                   <div>
                     <div className="relative w-full aspect-video bg-gray-100 rounded-lg overflow-hidden">
                       {product.image && (
@@ -100,7 +99,6 @@ export default function ProductDetailModal({
                     </div>
                   </div>
 
-                  {/* Right */}
                   <div className="flex flex-col h-full">
                     <div className="flex items-center justify-between">
                       <span className="text-3xl font-bold text-blue-500">

@@ -1,4 +1,3 @@
-// File: components/common/ScrollReveal.tsx
 "use client";
 
 import { motion, useInView, useAnimation } from "framer-motion";
@@ -20,7 +19,6 @@ export default function ScrollReveal({
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const mainControls = useAnimation();
 
-  // Kích hoạt animation khi component được nhìn thấy
   useEffect(() => {
     if (isInView) {
       mainControls.start("visible");

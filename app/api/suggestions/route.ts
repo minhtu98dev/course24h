@@ -1,4 +1,4 @@
-// File: app/api/suggestions/route.ts
+
 import { NextResponse } from 'next/server';
 import { products as allProducts } from '@/data/products';
 function handleError(error: unknown): NextResponse {
